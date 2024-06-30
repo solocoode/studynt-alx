@@ -8,6 +8,7 @@
 .appchild {
   display: flex;
   justify-content: space-between;
+  background-color: blueviolet;
 }
 
 .navbar {
@@ -74,7 +75,9 @@
 
 .cards {
   height: auto;
-  width: 400px;
+  width: 809px;
+  position: relative;
+  margin-left: 265px;
   border-radius: 25px;
   background-color: yellow;
 }

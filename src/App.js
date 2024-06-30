@@ -97,6 +97,21 @@ function Cards() {
           Addiction can steal your joy and leave you feeling empty and alone. 
         </p>
         <hr/>
+
+        <h5>s/Channel</h5>
+        <h6>How has addiction affected your life?</h6>
+        <p>Addiction can be a dark cloud that casts a long shadow.
+           It can seep into every corner of your life, affecting your health,
+            relationships, and even your sense of self. 
+             Finances can become strained as you prioritize your addiction, 
+             leading to debt or neglecting responsibilities.
+               The people you love may grow distant as trust erodes and broken promises pile up.
+                 The worst part can be the internal struggle – the guilt, shame, 
+                 and the constant battle between wanting to stop and the overwhelming 
+                 pull of the addictive behavior. 
+          Addiction can steal your joy and leave you feeling empty and alone. 
+        </p>
+        <hr/>
       </div>
     </div>
   );
