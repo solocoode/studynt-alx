@@ -1,0 +1,91 @@
+.channel {
+    margin: auto;
+    padding: 0%;
+    background-color: aqua;
+}
+
+.channel-main {
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.channel-card-info {
+    margin: 15px;
+    padding: 5px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    background-color: white
+}
+
+.channel-card-info h4 {
+    padding: 5px;
+    text-align: center;
+    display: flex;
+    font-weight: lighter;
+}
+
+.channel-card-title {
+    margin: 15px;
+    padding: 5px;
+    background-color: bisque;
+}
+
+.chat-functionality{
+    flex: 0 1 40px;
+    width: 700px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    position: absolute;
+    border-radius: 25px;
+  }
+  
+
+.chat-functionality {
+    position: fixed; /* Fix element to the viewport */
+    bottom: 0; /* Position at the bottom */
+    margin-bottom: 20px;
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Offset to center */
+    display: flex; /* Allow elements to stack horizontally */
+    align-items: center; /* Align vertically in the center */
+    width: 800px; /* Adjust width as needed */
+    height: fit-content;
+}
+  
+.chat-input {
+    background: none;
+    border: none;
+    outline: none!important;
+    resize: horizontal;
+    color: rgba(255, 255, 255, .7);
+    font-size: 15px;
+    height: fit-content;
+    margin: 0;
+    padding-right: 20px;
+    align-content: center;
+    width: 100%;
+}
+  
+.chat-send {
+    position: relative; /* Remove absolute positioning */
+    z-index: 1;
+    color: #fff;
+    border: none;
+    background: #0d0e0d;
+    font-size: 10px;
+    height: 30px;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 6px 10px; 
+    border-radius: 25px;
+    outline: none!important;
+    transition: background .2s ease;
+    float: right;
+    
+    &:hover {
+      background: #1D7745;
+    }
+}
+  
