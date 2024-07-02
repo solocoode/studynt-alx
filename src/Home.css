@@ -1,0 +1,70 @@
+.App {
+    height: auto;
+    width: 100%;
+    margin: auto;
+    padding: 0%;
+  }
+  
+  .appchild {
+    display: flex;
+    justify-content: space-between;
+    background-color: blueviolet;
+  }  
+  
+  .search-bar {
+    width: 500px; /* Stretch search bar to full width of its section */
+    height: 45px;
+    padding: 0.5rem 1rem; /* Add padding for text */
+    border: 1px solid #ccc;
+    border-radius: 50px; /* Create rounded corners */
+  }
+  
+  .cards {
+    height: auto;
+    width: 809px;
+    position: relative;
+    margin-left: 265px;
+    border-radius: 25px;
+    background-color: yellow;
+  }
+  
+  .card {
+    margin: 0%;
+    padding: 0px 10px;
+  }
+  
+  .recents {
+    background-color: #494646;
+    width: 255px;
+    height: auto;
+    float: right;
+    display: flex;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 25px;
+  }
+  
+  .recents h6 {
+    text-align: left;
+    color: white;
+    padding: 10px;
+  }
+  
+  .recentscard {
+    color: #4b4646;
+    margin: 5px;
+  }
+  
+  .recentcard h5 {
+    text-align: left;
+    color: white;
+    padding-left: 10px;
+    margin: 0px;
+  }
+  
+  .recentcard p {
+    text-align: left;
+    color: white;
+    padding-left: 10px;
+    margin: 5px;
+  }

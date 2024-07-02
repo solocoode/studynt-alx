@@ -1,0 +1,41 @@
+
+.channel {
+    margin: auto;
+    padding: 0%;
+}
+
+.channel-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.channel-main {
+    margin-left: 260px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: aqua;
+}
+
+.channel-card-info {
+    margin: 15px;
+    padding: 5px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    background-color: white
+}
+
+.channel-card-info h4 {
+    padding: 5px;
+    text-align: center;
+    display: flex;
+    font-weight: lighter;
+}
+
+.channel-card-title {
+    margin: 15px;
+    padding: 5px;
+    background-color: bisque;
+}
+
