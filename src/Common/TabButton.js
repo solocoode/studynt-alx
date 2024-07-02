@@ -12,7 +12,7 @@ function TabButton() {
             </div>
             <div className="tabButton">
                 <button>
-                    <Link to="/signup"><span>Signup</span></Link>
+                    <Link to="/signup"><span>Sign Up</span></Link>
                 </button>
             </div>
         </div>

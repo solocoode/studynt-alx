@@ -21,7 +21,7 @@ const Signup = (props) => {
         <div className="child">
             <TabButton/>
             <div className="titleContainer">
-                <div>Signup</div>
+                <div>Sign Up</div>
             </div>
             <br />
             <div className="inputContainer">

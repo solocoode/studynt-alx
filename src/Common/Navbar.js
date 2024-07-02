@@ -7,7 +7,7 @@ function Navbar() {
        <nav className="navbar">
   
           <div className="navbar-left">
-            <h1> <Link to="./login"> STUDYNT </Link> </h1>
+            <h1> <Link to="./"> STUDYNT </Link> </h1>
           </div>
   
           <div className="navbar-center">
@@ -20,10 +20,14 @@ function Navbar() {
   
           <div className="navbar-right">
           <h3>
-             <Link to="/create" target='blank'>Create</Link> 
-             </h3>
+            <Link to="/create" target='blank'>Create</Link> 
+          </h3>
+          <div className="profile">
+            <Link to="./login"> <img src="logo192.png" alt="Profile" className="profile-icon" /> </Link>
+            
           </div>
-  
+          </div>
+          
         </nav>
     );
   }
