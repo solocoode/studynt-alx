@@ -1,0 +1,78 @@
+.create {
+    margin: auto;
+    padding: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.create-container {
+    margin: auto;
+    padding: 1%;
+    width: 78%;
+    height: 100%;
+    padding-bottom: 30px;
+    border-radius: 25px;
+    display: flex;
+    float: right;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(57, 155, 155);
+}
+
+.create-container-header {
+    align-self: center;
+    font-weight: bolder;
+    font-size: 3em;
+}
+
+.create-container-title {
+    margin: auto;
+    padding: 0%;
+    align-self: center;
+    height: fit-content;
+    width: 600px;
+    border-radius: 25px;
+}
+
+.create-container-title input {
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+    border-radius: 25px;
+    font-size: 3em;
+}
+
+.create-container-content {
+    margin: auto;
+    padding-top: 5%;
+    align-self: center;
+    height: fit-content;
+    width: 600px;
+    border-radius: 25px;
+}
+
+.create-container-content textarea {
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+    border-radius: 25px;
+    font-size: 3em;
+}
+
+.post-button {
+    margin: auto;
+    padding-top: 2%;
+    align-self: center;
+}
+
+.post-button button {
+    width: 100px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+.post-button h6{
+    margin: auto;
+    padding: auto;
+    font-size: 3.5cap;
+}
