@@ -7,7 +7,7 @@ function Navbar() {
        <nav className="navbar">
   
           <div className="navbar-left">
-            <h1><a href="/"> STUDYNT </a></h1>
+            <h1> <Link to="./login"> STUDYNT </Link> </h1>
           </div>
   
           <div className="navbar-center">
