@@ -34,7 +34,10 @@ function ChannelCard() {
 
             <div className="channel-card-title">
                 <h3>Eductational Hackathon Study</h3>
-                <p>
+            </div>
+
+            <div className="channel-card-body">
+            <p>
                 We are a group of students from the SFU School of Interactive Arts and Technology, 
                 working on an exciting interface design project. 
                 Our aim is to gather insights from hackathon participants, 

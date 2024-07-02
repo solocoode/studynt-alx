@@ -8,40 +8,34 @@
   .appchild {
     display: flex;
     justify-content: space-between;
-    background-color: blueviolet;
+    background-color: rgb(20, 20, 20);
   }  
   
-  .search-bar {
-    width: 500px; /* Stretch search bar to full width of its section */
-    height: 45px;
-    padding: 0.5rem 1rem; /* Add padding for text */
-    border: 1px solid #ccc;
-    border-radius: 50px; /* Create rounded corners */
-  }
+  
   
   .cards {
     height: auto;
     width: 809px;
     position: relative;
     margin-left: 265px;
-    border-radius: 25px;
-    background-color: yellow;
   }
   
   .card {
     margin: 0%;
     padding: 0px 10px;
   }
+
+  .card h5,h6, p {
+    color: white;
+  }
   
   .recents {
-    background-color: #494646;
+    background-color: rgb(37, 37, 37);
     width: 255px;
     height: auto;
     float: right;
     display: flex;
-    margin-top: 10px;
-    margin-right: 10px;
-    border-radius: 25px;
+    border-left: 1px solid white;
   }
   
   .recents h6 {

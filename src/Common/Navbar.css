@@ -3,9 +3,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #3d5358;
+    background-color: rgb(20, 20, 20);
     height: 60px;
-    
+    border-bottom: 1px solid white;
   }
   
   .navbar-left {
@@ -13,13 +13,10 @@
     padding: 0%;
   }
   
-  .navbar-left a  {
+  .navbar-left :link {
     text-decoration: none;
-    color: inherit;
-    display: inline-block; /* Make the link behave like a block element */
-    padding: 10px 20px; /* Add padding for the background */
-    border-radius: 5px; /* Create rounded corners */
-    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    padding: 10px 20px;
+    color: white;
   }
   
   .navbar-right {
@@ -29,9 +26,9 @@
     flex-direction: row;
   }
 
-  .navbar-right a  {
+  .navbar-right h3   {
     text-decoration: none;
-    color: inherit;
+    color: white;
     display: inline-block; /* Make the link behave like a block element */
     padding: 10px 20px; /* Add padding for the background */
     border-radius: 5px; /* Create rounded corners */
@@ -42,4 +39,14 @@
     width: 30px; /* Adjust width as needed */
     height: 30px; /* Adjust height as needed */
     margin-right: 15px; /* Add spacing from the "Create" link */
+  }
+
+  .search-bar {
+    color: white;
+    width: 500px; /* Stretch search bar to full width of its section */
+    height: 45px;
+    padding: 0.5rem 1rem; /* Add padding for text */
+    border: 1px solid #ccc;
+    border-radius: 50px; /* Create rounded corners */
+    background-color: rgb(49, 49, 49);
   }
