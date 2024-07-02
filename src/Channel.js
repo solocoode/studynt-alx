@@ -1,16 +1,22 @@
 import React from "react";
 import './Channel.css';
+import Sidebar from './Common/Sidebar'
 
 function Channel() {
     return (
         <div className="channel">
-            <div className="channel-main">
-                <h1>s/Channel</h1>
-                <ChannelCard/>
-                <hr/>
-            </div>
-            <div className="channel-chat">
-                <ChatFunctionality/>
+            <div className="channel-box">
+                <div className="channel-main">
+                    <h1>s/Channel</h1>
+                    <ChannelCard/>
+                    <hr/>
+                </div>
+                <div className="channel-chat">
+                    <ChatFunctionality/>
+                </div>
+                <div className="sidebar">
+                    <Sidebar/>
+                </div>
             </div>
         </div>
     );
@@ -75,6 +81,3 @@ function ChatFunctionality() {
         </div>
     );
 }
-
-
-// add sidebar

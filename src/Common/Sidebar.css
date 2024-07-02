@@ -1,0 +1,17 @@
+  .sidebar {
+    background-color: #17b9dd;
+    width: 255px;
+    height: auto;
+    position: absolute;
+  }
+  
+  .sidebar a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block; /* Make the link behave like a block element */
+    padding: 10px 20px; /* Add padding for the background */
+  }
+  
+  .channel h4 {
+    padding-left: 20px;
+  }
