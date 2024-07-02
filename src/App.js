@@ -13,7 +13,6 @@ function App() {
             <Route index element={<Home/>}/> 
             <Route path="/channel" element={<Channel />} /> 
             <Route path="/create" element={<Create/>}/>
-            <Route path="/create" element={<Create/>}/>
           </Routes>
       </div>
     </BrowserRouter>
