@@ -5,21 +5,7 @@ import './Sidebar.css'
 function Sidebar() {
     return (
       <div className="sidebar">
-        <Categories/>
-        <hr/>
         <Channels/>
-      </div>
-    );
-  }
-  
-  function Categories() {
-    return (
-      <div className="categories">
-        <div className="category-item">
-          <h3> <a href="/">Home</a> </h3>
-          <h3> <a href="/">Popular</a> </h3>
-          <h3> <a href="/">All</a> </h3>
-        </div>
       </div>
     );
   }
