@@ -1,5 +1,6 @@
 import React from "react";
 import './Navbar.css'
+import {Link} from "react-router-dom";
 
 function Navbar() {
     return (
@@ -18,7 +19,9 @@ function Navbar() {
           </div>
   
           <div className="navbar-right">
-          <h3> <a href="/">Create</a> </h3>
+          <h3>
+             <Link to="/create" target='blank'>Create</Link> 
+             </h3>
           </div>
   
         </nav>
