@@ -7,7 +7,7 @@ function Navbar() {
        <nav className="navbar">
   
           <div className="navbar-left">
-            <h1> <Link to="./"> STUDYNT </Link> </h1>
+            <h1> <Link to="/"> STUDYNT </Link> </h1>
           </div>
   
           <div className="navbar-center">
@@ -24,7 +24,7 @@ function Navbar() {
           </h3>
           <div className="profile">
             <Link to="./login"> <img src="logo192.png" alt="Profile" className="profile-icon" /> </Link>
-            
+          
           </div>
           </div>
           

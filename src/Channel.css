@@ -1,20 +1,27 @@
-
 .channel {
     margin: auto;
     padding: 0%;
+    height: 100%;
+    background-color: rgb(20, 20, 20);
 }
 
 .channel-box {
     display: flex;
     justify-content: space-between;
+    background-color: rgb(20, 20, 20);
 }
 
 .channel-main {
+    height: 100%;
     margin-left: 260px;
     padding-top: 10px;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: aqua;
+    background-color: rgb(20, 20, 20);
+}
+
+.channel-main h1 {
+    color: white;
 }
 
 .channel-card-info {
@@ -23,7 +30,6 @@
     height: 60px;
     display: flex;
     flex-direction: row;
-    background-color: white
 }
 
 .channel-card-info h4 {
@@ -34,8 +40,15 @@
 }
 
 .channel-card-title {
-    margin: 15px;
+    color: white;
     padding: 5px;
-    background-color: bisque;
+}
+
+.channel-card-body {
+    color: white;
+    margin-top: 0%;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 5px;
 }
 

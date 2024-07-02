@@ -44,8 +44,9 @@ export default Home;
             Addiction can steal your joy and leave you feeling empty and alone. 
           </p>
           <hr/>
-  
-          <h5>s/Channel</h5>
+          <h5>
+            <Link to="/channel" target='blank'>s/Channel</Link>
+          </h5>
           <h6>How has addiction affected your life?</h6>
           <p>Addiction can be a dark cloud that casts a long shadow.
              It can seep into every corner of your life, affecting your health,
@@ -119,3 +120,5 @@ export default Home;
       </div>
     );
   }
+
+  //change recents to notes?
