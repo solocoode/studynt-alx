@@ -1,6 +1,7 @@
 import React from 'react';
 import './Home.css';
 import Sidebar from './Common/Sidebar'
+import Navbar from './Common/Navbar'
 import { Link} from 'react-router-dom';
 
 
@@ -22,30 +23,6 @@ function Home() {
 
 export default Home;
 
-
-function Navbar() {
-    return (
-       <nav className="navbar">
-  
-          <div className="navbar-left">
-            <h1><a href="/"> STUDYNT </a></h1>
-          </div>
-  
-          <div className="navbar-center">
-            <input
-              type="search"
-              className="search-bar rounded"
-              placeholder="Search..."
-            />
-          </div>
-  
-          <div className="navbar-right">
-          <h3> <a href="/">Create</a> </h3>
-          </div>
-  
-        </nav>
-    );
-  }
   
   function Cards() {
     return (

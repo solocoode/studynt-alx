@@ -1,21 +1,18 @@
 import React from "react";
 import './Channel.css';
 import Sidebar from './Common/Sidebar'
+import Navbar from './Common/Navbar'
 
 function Channel() {
     return (
         <div className="channel">
+            <Navbar />
             <div className="channel-box">
+                <Sidebar/>
                 <div className="channel-main">
                     <h1>s/Channel</h1>
                     <ChannelCard/>
                     <hr/>
-                </div>
-                <div className="channel-chat">
-                    <ChatFunctionality/>
-                </div>
-                <div className="sidebar">
-                    <Sidebar/>
                 </div>
             </div>
         </div>
@@ -54,30 +51,3 @@ function ChannelCard() {
 }
 
 
-function ChatFunctionality() {
-    //const [comment, setComment] = useState(''); // State to store comment text
-  
-    //const handleChange = (event) => {
-      //setComment(event.target.value);
-    //};
-  
-    //const handleSubmit = (event) => {
-      //event.preventDefault(); // Prevent default form submission behavior
-      // Implement logic to handle comment submission (e.g., send to server)
-      //console.log('Submitted comment:', comment);
-      //setComment(''); // Clear comment after submission (optional)
-    //};
-    return (
-        <div className="chat-functionality">
-            <textarea
-                    className="chat-input"
-                    placeholder="Type message..."
-                    //value={comment}
-                    //onChange={handleChange}
-                />
-                <button type="submit" className="chat-send">
-                    Send
-                </button>
-        </div>
-    );
-}
