@@ -23,7 +23,7 @@ function Navbar() {
             <Link to="/create" target='blank'>Create</Link> 
           </h3>
           <div className="profile">
-            <Link to="./login"> <img src="logo192.png" alt="Profile" className="profile-icon" /> </Link>
+            <Link to="./profile"> <img src="logo192.png" alt="Profile" className="profile-icon" /> </Link>
           
           </div>
           </div>
