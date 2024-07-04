@@ -6,6 +6,7 @@ import Channel from './Channel';
 import Create from './Create';
 import Login from './auth/Login';
 import Signup from './auth/Signup';
+import Profile from './auth/Profile';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/create" element={<Create/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/Signup" element={<Signup/>}/>
+            <Route path="/Profile" element={<Profile/>}/>
           </Routes>
       </div>
     </BrowserRouter>
@@ -24,4 +26,3 @@ function App() {
 }
 
 export default App;
-
