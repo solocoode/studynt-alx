@@ -2,32 +2,29 @@ import React, { useState, useEffect } from "react";
 import './Channel.css';
 import Sidebar from './Common/Sidebar';
 import Navbar from './Common/Navbar';
-import { useParams } from "react-router-dom";
-import { getFirestore, collection, query, where, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 function Channel() {
-    const { channelName } = useParams();
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        if (channelName) {
-            fetchPosts(channelName);
-        }
-    }, [channelName]);
+        fetchPosts();
+    }, []);
 
-    const fetchPosts = async (channelName) => {
+    const fetchPosts = async () => {
         try {
             const db = getFirestore();
             const postsCollection = collection(db, 'posts');
-            const q = query(postsCollection, where('channel', '==', channelName));
-            const querySnapshot = await getDocs(q);
-            const postsData = querySnapshot.docs.map(doc => ({
+            const postsSnapshot = await getDocs(postsCollection);
+            const postsList = postsSnapshot.docs.map(doc => ({
                 id: doc.id,
-                ...doc.data()
+                ...doc.data(),
+                timestamp: doc.data().timestamp ? doc.data().timestamp.toDate() : new Date()
             }));
-            setPosts(postsData);
+            postsList.sort((a, b) => b.timestamp - a.timestamp); // Sort posts by timestamp in descending order
+            setPosts(postsList);
         } catch (error) {
-            console.error("Error fetching posts: ", error);
+            console.error('Error fetching posts: ', error);
         }
     };
 
@@ -37,12 +34,12 @@ function Channel() {
             <div className="channel-box">
                 <Sidebar />
                 <div className="channel-main">
-                    <h1>s/{channelName}</h1>
+                    <h1>s/{posts.channel}</h1>
                     {posts.map(post => (
                         <div key={post.id}>
                             <ChannelCard
-                                username={post.author} // Assuming post data includes an author field
-                                timestamp={post.timestamp ? post.timestamp.toDate().toLocaleString() : "N/A"}
+                                username="User" // Assuming post data includes an 'author' field
+                                timestamp={post.timestamp && post.timestamp instanceof Date ? post.timestamp.toLocaleString() : "N/A"}
                                 title={post.title}
                                 body={post.content}
                             />
@@ -60,7 +57,7 @@ function ChannelCard({ username, title, body, timestamp }) {
         <div className="channel-card">
             <div className="channel-card-info">
                 <h6>{username}</h6>
-                <h4> * </h4>
+                <p>.</p>
                 <h6>{timestamp}</h6>
             </div>
             <div className="channel-card-title">

@@ -22,11 +22,14 @@ function Channels() {
         const db = getFirestore();
         const channelsCollection = collection(db, 'channels');
         const channelsSnapshot = await getDocs(channelsCollection);
-        let channelsList = channelsSnapshot.docs.map(doc => ({
+        const channelsList = channelsSnapshot.docs.map(doc => ({
             id: doc.id,
             name: doc.data().name
         }));
-        channelsList.sort((a, b) => a.name.localeCompare(b.name)); // Sort channels by name in alphabetical order
+
+        // Sort channelsList alphabetically by name
+        channelsList.sort((a, b) => a.name.localeCompare(b.name));
+
         setChannels(channelsList);
     };
 
@@ -39,7 +42,7 @@ function Channels() {
           </div>
           {channels.map(channel => (
             <h3 key={channel.id}>
-              <Link to={`${channel.name}`}> {channel.name} </Link>
+              <Link to={"/channel"}> {channel.name} </Link>
             </h3>
           ))}
         </div>

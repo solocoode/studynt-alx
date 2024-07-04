@@ -17,14 +17,19 @@ function Create() {
     }, []);
 
     const fetchChannels = async () => {
-        const db = getFirestore();
-        const channelsCollection = collection(db, 'channels');
-        const channelsSnapshot = await getDocs(channelsCollection);
-        const channelsList = channelsSnapshot.docs.map(doc => ({
-            id: doc.id,
-            name: doc.data().name
-        }));
-        setChannels(channelsList);
+        try {
+            const db = getFirestore();
+            const channelsCollection = collection(db, 'channels');
+            const channelsSnapshot = await getDocs(channelsCollection);
+            const channelsList = channelsSnapshot.docs.map(doc => ({
+                id: doc.id,
+                name: doc.data().name
+            }));
+            channelsList.sort((a, b) => a.name.localeCompare(b.name)); // Sort channels alphabetically
+            setChannels(channelsList);
+        } catch (error) {
+            console.error('Error fetching channels: ', error);
+        }
     };
 
     const handlePost = async () => {
@@ -33,21 +38,24 @@ function Create() {
             return;
         }
 
-        const db = getFirestore();
-        const postsCollection = collection(db, 'posts');
-        await addDoc(postsCollection, {
-            channel: selectedChannel,
-            title: title,
-            content: content,
-            timestamp: new Date()
-        });
+        try {
+            const db = getFirestore();
+            const postsCollection = collection(db, 'posts');
+            await addDoc(postsCollection, {
+                channel: selectedChannel,
+                title: title,
+                content: content,
+                timestamp: new Date()
+            });
 
-        // Clear form fields after posting
-        setSelectedChannel('');
-        setTitle('');
-        setContent('');
-        navigate('/'); // Redirect to home page after successful post
-        alert('Post successfully added!');
+            // Clear form fields after posting
+            setSelectedChannel('');
+            setTitle('');
+            setContent('');
+            navigate('/'); // Redirect to home page after successful post
+        } catch (error) {
+            console.error('Error adding post: ', error);
+        }
     };
 
     return (

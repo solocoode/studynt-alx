@@ -25,18 +25,17 @@
 }
 
 .channel-card-info {
-    margin: 15px;
     padding: 5px;
-    height: 60px;
+    margin: auto;
+    height: 50px;
     display: flex;
     flex-direction: row;
+    font: 1.5em sans-serif;
 }
 
-.channel-card-info h4 {
-    padding: 5px;
-    text-align: center;
-    display: flex;
-    font-weight: lighter;
+.channel-card-info p {
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .channel-card-title {
