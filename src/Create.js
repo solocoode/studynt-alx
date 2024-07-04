@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import './Create.css';
 import Navbar from "./Common/Navbar";
 import Sidebar from "./Common/Sidebar";
-import { getFirestore, collection, addDoc, query, where, getDocs } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 
 function Create() {
     const [channels, setChannels] = useState([]);

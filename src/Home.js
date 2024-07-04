@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Home.css';
-import Sidebar from './Common/Sidebar'
-import Navbar from './Common/Navbar'
+import Sidebar from './Common/Sidebar';
+import Navbar from './Common/Navbar';
 import { Link } from 'react-router-dom';
-
-
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 function Home() {
     return (
@@ -23,102 +22,79 @@ function Home() {
 
 export default Home;
 
-  
-  function Cards() {
-    return (
-      <div className="cards">
-        <div className="card">
-          <h5>
-            <Link to="/channel" target='blank'>s/Channel</Link>
-          </h5>
-          <h6>How has addiction affected your life?</h6>
-          <p>Addiction can be a dark cloud that casts a long shadow.
-             It can seep into every corner of your life, affecting your health,
-              relationships, and even your sense of self. 
-               Finances can become strained as you prioritize your addiction, 
-               leading to debt or neglecting responsibilities.
-                 The people you love may grow distant as trust erodes and broken promises pile up.
-                   The worst part can be the internal struggle – the guilt, shame, 
-                   and the constant battle between wanting to stop and the overwhelming 
-                   pull of the addictive behavior. 
-            Addiction can steal your joy and leave you feeling empty and alone. 
-          </p>
-          <hr/>
-          <h5>
-            <Link to="/channel" target='blank'>s/Channel</Link>
-          </h5>
-          <h6>How has addiction affected your life?</h6>
-          <p>Addiction can be a dark cloud that casts a long shadow.
-             It can seep into every corner of your life, affecting your health,
-              relationships, and even your sense of self. 
-               Finances can become strained as you prioritize your addiction, 
-               leading to debt or neglecting responsibilities.
-                 The people you love may grow distant as trust erodes and broken promises pile up.
-                   The worst part can be the internal struggle – the guilt, shame, 
-                   and the constant battle between wanting to stop and the overwhelming 
-                   pull of the addictive behavior. 
-            Addiction can steal your joy and leave you feeling empty and alone. 
-          </p>
-          <hr/>
-        </div>
-      </div>
-    );
-  }
+function Cards() {
+    const [posts, setPosts] = useState([]);
 
-  function Recents() {
-    return (
-      <div className="recents">
-        <div className="recent">
-          <h6>RECENT POSTS</h6>
-          <hr/>
-          <RecentsCard/>
-        </div>
-      </div>
-    );
-  }
-  
-  function RecentsCard() {
-    return (
-      <div className="recentscard">
-        <div className="recentcard">
-          <h5>s/Channel</h5>
-          <p>Realm-based Hackathon - Aim for Impact</p>
-          <hr/>
-  
-          <h5>s/Channel</h5>
-          <p>Realm-based Hackathon - Aim for Impact</p>
-          <hr/>
-          
-          <h5>s/Channel</h5>
-          <p>Realm-based Hackathon - Aim for Impact</p>
-          <hr/>
-          
-          <h5>s/Channel</h5>
-          <p>Realm-based Hackathon - Aim for Impact</p>
-          <hr/>
-          
-          <h5>s/Channel</h5>
-          <p>Realm-based Hackathon - Aim for Impact</p>
-          <hr/>
-          
-          <h5>s/Channel</h5>
-          <p>Realm-based Hackathon - Aim for Impact</p>
-          <hr/>
-          
-          <h5>s/Channel</h5>
-          <p>Realm-based Hackathon - Aim for Impact</p>
-          <hr/>
-          
-          <h5>s/Channel</h5>
-          <p>Realm-based Hackathon - Aim for Impact</p>
-          <hr/>
-          
-          <h5>s/Channel</h5>
-          <p>Realm-based Hackathon - Aim for Impact</p>
-          <hr/>
-        </div>
-      </div>
-    );
-  }
+    useEffect(() => {
+        fetchPosts();
+    }, []);
 
-  //change recents to notes?
+    const fetchPosts = async () => {
+        const db = getFirestore();
+        const postsCollection = collection(db, 'posts');
+        const postsSnapshot = await getDocs(postsCollection);
+        const postsList = postsSnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+        }));
+        setPosts(postsList);
+    };
+
+    return (
+        <div className="cards">
+            {posts.map(post => (
+                <div className="card" key={post.id}>
+                    <h5>
+                        <Link to={`/channel/${post.channel}`}> {post.channel}</Link>
+                    </h5>
+                    <h6>{post.title}</h6>
+                    <p>{post.content}</p>
+                    <hr />
+                </div>
+            ))}
+        </div>
+    );
+}
+
+function Recents() {
+    return (
+        <div className="recents">
+            <div className="recent">
+                <h6>RECENT POSTS</h6>
+                <hr />
+                <RecentsCard />
+            </div>
+        </div>
+    );
+}
+
+function RecentsCard() {
+    const [recentPosts, setRecentPosts] = useState([]);
+
+    useEffect(() => {
+        fetchRecentPosts();
+    }, []);
+
+    const fetchRecentPosts = async () => {
+        const db = getFirestore();
+        const postsCollection = collection(db, 'posts');
+        const postsSnapshot = await getDocs(postsCollection);
+        const postsList = postsSnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+        }));
+        setRecentPosts(postsList.slice(0, 10)); // Displaying the 10 most recent posts
+    };
+
+    return (
+        <div className="recentscard">
+            {recentPosts.map(post => (
+                <div className="recentcard" key={post.id}>
+                    <h5>{post.channel}</h5>
+                    <p>{post.title}</p>
+                    <hr />
+                </div>
+            ))}
+        </div>
+    );
+}
