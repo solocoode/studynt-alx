@@ -15,15 +15,17 @@ const Profile = () => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
-      setUser(currentUser);
       if (currentUser) {
+        setUser(currentUser);
         setUsername(currentUser.displayName || '');
         setEmail(currentUser.email);
+      } else {
+        navigate('/login');
       }
     });
 
     return unsubscribe;
-  }, [auth]);
+  }, [auth, navigate]);
 
   const handleEdit = () => {
     setEditMode(!editMode);
@@ -61,50 +63,48 @@ const Profile = () => {
     }
   };
 
+  if (!user) {
+    return null; // Return null if user is not set to avoid rendering the component
+  }
+
   return (
     <div className="profile-container">
-      {user ? (
-        <>
-          <h1>Welcome, {username || 'User'}</h1>
-          {!editMode ? (
-            <div className="profile-info">
-              <p>Username: {username || 'N/A'}</p>
-              <p>Email: {email}</p>
-              <button className="edit-button" onClick={handleEdit}>Edit</button>
-            </div>
-          ) : (
-            <form className="profile-form" onSubmit={handleSave}>
-              <input
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
-                className="input-box"
-              />
-              <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-                type="email"
-                className="input-box"
-              />
-              <input
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="New Password"
-                type="password"
-                className="input-box"
-              />
-              <div className="button-group">
-                <button className="save-button" type="submit">Save</button>
-                <button className="cancel-button" onClick={handleEdit}>Cancel</button>
-              </div>
-            </form>
-          )}
-          <button className="logout-button" onClick={handleLogout}>Logout</button>
-        </>
+      <h1>Welcome, {username || 'User'}</h1>
+      {!editMode ? (
+        <div className="profile-info">
+          <p>Username: {username || 'N/A'}</p>
+          <p>Email: {email}</p>
+          <button className="edit-button" onClick={handleEdit}>Edit</button>
+        </div>
       ) : (
-        <p>Loading...</p>
+        <form className="profile-form" onSubmit={handleSave}>
+          <input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Username"
+            className="input-box"
+          />
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            type="email"
+            className="input-box"
+          />
+          <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="New Password"
+            type="password"
+            className="input-box"
+          />
+          <div className="button-group">
+            <button className="save-button" type="submit">Save</button>
+            <button className="cancel-button" onClick={handleEdit}>Cancel</button>
+          </div>
+        </form>
       )}
+      <button className="logout-button" onClick={handleLogout}>Logout</button>
     </div>
   );
 };
