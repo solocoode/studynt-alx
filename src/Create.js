@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import './Create.css';
 import Navbar from "./Common/Navbar";
 import Sidebar from "./Common/Sidebar";
@@ -9,6 +10,7 @@ function Create() {
     const [selectedChannel, setSelectedChannel] = useState('');
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchChannels();
@@ -44,7 +46,7 @@ function Create() {
         setSelectedChannel('');
         setTitle('');
         setContent('');
-
+        navigate('/'); // Redirect to home page after successful post
         alert('Post successfully added!');
     };
 

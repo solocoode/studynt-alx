@@ -20,10 +20,10 @@ function Navbar() {
   
           <div className="navbar-right">
           <h3>
-            <Link to="/create" target='blank'>Create</Link> 
+            <Link to="/create">Create</Link> 
           </h3>
           <div className="profile">
-            <Link to="./profile"> <img src="logo192.png" alt="Profile" className="profile-icon" /> </Link>
+            <Link to="/profile"> <img src="logo192.png" alt="Profile" className="profile-icon" /> </Link>
           
           </div>
           </div>
@@ -33,3 +33,7 @@ function Navbar() {
   }
 
 export default Navbar;
+
+//implement searchbar
+//implement profile icon
+//implement create to load home screen after posting

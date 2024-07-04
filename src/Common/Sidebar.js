@@ -33,9 +33,12 @@ function Channels() {
       <div className="channels">
         <div className="channel">
           <h4>CHANNELS</h4>
+          <div className="create-channel-btn">
+            <h3><Link to="/create-channel">Create Channel</Link></h3>
+          </div>
           {channels.map(channel => (
             <h3 key={channel.id}>
-              <Link to={`/channel/${channel.name}`}>s/{channel.name}</Link>
+              <Link to={`${channel.name}`}> {channel.name} </Link>
             </h3>
           ))}
         </div>

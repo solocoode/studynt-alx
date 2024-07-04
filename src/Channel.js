@@ -16,15 +16,19 @@ function Channel() {
     }, [channelName]);
 
     const fetchPosts = async (channelName) => {
-        const db = getFirestore();
-        const postsCollection = collection(db, 'posts');
-        const q = query(postsCollection, where('channel', '==', channelName));
-        const querySnapshot = await getDocs(q);
-        const postsData = querySnapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-        }));
-        setPosts(postsData);
+        try {
+            const db = getFirestore();
+            const postsCollection = collection(db, 'posts');
+            const q = query(postsCollection, where('channel', '==', channelName));
+            const querySnapshot = await getDocs(q);
+            const postsData = querySnapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+            setPosts(postsData);
+        } catch (error) {
+            console.error("Error fetching posts: ", error);
+        }
     };
 
     return (
@@ -37,8 +41,8 @@ function Channel() {
                     {posts.map(post => (
                         <div key={post.id}>
                             <ChannelCard
-                                username="User" // Replace with actual username logic if available
-                                timestamp={post.timestamp.toDate().toLocaleString()}
+                                username={post.author} // Assuming post data includes an author field
+                                timestamp={post.timestamp ? post.timestamp.toDate().toLocaleString() : "N/A"}
                                 title={post.title}
                                 body={post.content}
                             />
@@ -51,14 +55,12 @@ function Channel() {
     );
 }
 
-export default Channel;
-
 function ChannelCard({ username, title, body, timestamp }) {
     return (
         <div className="channel-card">
             <div className="channel-card-info">
                 <h6>{username}</h6>
-                <h4> * </h4> {/* Placeholder for any additional information */}
+                <h4> * </h4>
                 <h6>{timestamp}</h6>
             </div>
             <div className="channel-card-title">
@@ -70,3 +72,5 @@ function ChannelCard({ username, title, body, timestamp }) {
         </div>
     );
 }
+
+export default Channel;
