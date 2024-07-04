@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import './Profile.css';
 import { getAuth, updateProfile, updateEmail, updatePassword, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -11,21 +12,30 @@ const Profile = () => {
   const [password, setPassword] = useState('');
 
   const auth = getAuth();
+  const db = getFirestore();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+    const unsubscribe = auth.onAuthStateChanged(async (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
-        setUsername(currentUser.displayName || '');
         setEmail(currentUser.email);
+
+        const userDoc = doc(db, "users", currentUser.uid);
+        const userSnapshot = await getDoc(userDoc);
+
+        if (userSnapshot.exists()) {
+          setUsername(userSnapshot.data().username);
+        } else {
+          setUsername(currentUser.displayName || '');
+        }
       } else {
         navigate('/login');
       }
     });
 
     return unsubscribe;
-  }, [auth, navigate]);
+  }, [auth, db, navigate]);
 
   const handleEdit = () => {
     setEditMode(!editMode);
@@ -37,6 +47,9 @@ const Profile = () => {
     try {
       if (username && username !== user.displayName) {
         await updateProfile(auth.currentUser, { displayName: username });
+
+        const userDoc = doc(db, "users", auth.currentUser.uid);
+        await setDoc(userDoc, { username }, { merge: true });
       }
 
       if (email && email !== user.email) {
