@@ -19,8 +19,10 @@ function Home() {
             const postsSnapshot = await getDocs(postsCollection);
             const postsList = postsSnapshot.docs.map(doc => ({
                 id: doc.id,
-                ...doc.data()
+                ...doc.data(),
+                timestamp: doc.data().timestamp ? doc.data().timestamp.toDate() : new Date()
             }));
+            postsList.sort((a, b) => b.timestamp - a.timestamp); // Sort posts by timestamp in descending order
             setPosts(postsList);
         } catch (error) {
             console.error('Error fetching posts: ', error);

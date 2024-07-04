@@ -1,10 +1,10 @@
   .sidebar {
     width: 255px;
-    height: 100%;
+    height: auto;
     position: absolute;
-    border-right: 1px solid white;
-    
+    border-right: 1px solid white; 
   }
+
   
   .sidebar a {
     text-decoration: none;
