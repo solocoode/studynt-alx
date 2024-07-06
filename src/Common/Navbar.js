@@ -33,7 +33,3 @@ function Navbar() {
   }
 
 export default Navbar;
-
-//implement searchbar
-//implement profile icon
-//implement create to load home screen after posting
