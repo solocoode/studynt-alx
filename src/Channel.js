@@ -2,20 +2,48 @@ import React, { useState, useEffect } from "react";
 import './Channel.css';
 import Sidebar from './Common/Sidebar';
 import Navbar from './Common/Navbar';
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
 
 function Channel() {
     const [posts, setPosts] = useState([]);
+    const [channels, setChannels] = useState([]);
+    const [selectedChannel, setSelectedChannel] = useState(null);
 
     useEffect(() => {
-        fetchPosts();
+        fetchChannels();
     }, []);
+
+    useEffect(() => {
+        if (selectedChannel) {
+            fetchPosts();
+        }
+    }, [selectedChannel]);
+
+    const fetchChannels = async () => {
+        try {
+            const db = getFirestore();
+            const channelsCollection = collection(db, 'channels');
+            const channelsSnapshot = await getDocs(channelsCollection);
+            const channelsList = channelsSnapshot.docs.map(doc => ({
+                id: doc.id,
+                name: doc.data().name
+            }));
+            setChannels(channelsList);
+            // Select the first channel by default
+            if (channelsList.length > 0) {
+                setSelectedChannel(channelsList[0]);
+            }
+        } catch (error) {
+            console.error('Error fetching channels: ', error);
+        }
+    };
 
     const fetchPosts = async () => {
         try {
             const db = getFirestore();
             const postsCollection = collection(db, 'posts');
-            const postsSnapshot = await getDocs(postsCollection);
+            const q = query(postsCollection, where("channel", "==", selectedChannel.name));
+            const postsSnapshot = await getDocs(q);
             const postsList = postsSnapshot.docs.map(doc => ({
                 id: doc.id,
                 ...doc.data(),
@@ -28,13 +56,27 @@ function Channel() {
         }
     };
 
+    const handleChannelChange = (event) => {
+        const channelId = event.target.value;
+        const selectedChannel = channels.find(channel => channel.id === channelId);
+        setSelectedChannel(selectedChannel);
+    };
+
     return (
         <div className="channel">
             <Navbar />
             <div className="channel-box">
                 <Sidebar />
                 <div className="channel-main">
-                    <h1>s/{posts.channel}</h1>
+                    <select onChange={handleChannelChange} value={selectedChannel ? selectedChannel.id : ''}>
+                        {channels.map(channel => (
+                            <option key={channel.id} value={channel.id}>
+                                {channel.name}
+                            </option>
+                        ))}
+                    </select>
+                    {selectedChannel && <h1>{selectedChannel.name}</h1>}
+                    <hr />
                     {posts.map(post => (
                         <div key={post.id}>
                             <ChannelCard

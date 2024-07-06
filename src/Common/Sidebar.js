@@ -42,7 +42,7 @@ function Channels() {
           </div>
           {channels.map(channel => (
             <h3 key={channel.id}>
-              <Link to={"/channel"}> {channel.name} </Link>
+              <Link to={"/channel"}> {channel.name} </Link> 
             </h3>
           ))}
         </div>

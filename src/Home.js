@@ -49,7 +49,7 @@ function Cards({ posts }) {
             {posts.map(post => (
                 <div className="card" key={post.id}>
                     <h5>
-                        <Link to={`/${post.channel}`}>{post.channel}</Link>
+                        <Link to={"/channel"}>{post.channel}</Link>
                     </h5>
                     <h6>{post.title}</h6>
                     <p>{post.content}</p>
