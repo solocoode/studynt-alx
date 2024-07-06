@@ -22,7 +22,7 @@ function Home() {
                 ...doc.data(),
                 timestamp: doc.data().timestamp ? doc.data().timestamp.toDate() : new Date()
             }));
-            postsList.sort((a, b) => b.timestamp - a.timestamp); // Sort posts by timestamp in descending order
+            postsList.sort((a, b) => b.timestamp - a.timestamp);
             setPosts(postsList);
         } catch (error) {
             console.error('Error fetching posts: ', error);

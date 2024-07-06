@@ -25,7 +25,7 @@ function Create() {
                 id: doc.id,
                 name: doc.data().name
             }));
-            channelsList.sort((a, b) => a.name.localeCompare(b.name)); // Sort channels alphabetically
+            channelsList.sort((a, b) => a.name.localeCompare(b.name));
             setChannels(channelsList);
         } catch (error) {
             console.error('Error fetching channels: ', error);
@@ -48,11 +48,10 @@ function Create() {
                 timestamp: new Date()
             });
 
-            // Clear form fields after posting
             setSelectedChannel('');
             setTitle('');
             setContent('');
-            navigate('/'); // Redirect to home page after successful post
+            navigate('/');
         } catch (error) {
             console.error('Error adding post: ', error);
         }

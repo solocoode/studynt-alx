@@ -15,7 +15,7 @@ function CreateChannel() {
             await addDoc(channelsCollection, {
                 name: channelName
             });
-            navigate(`/${channelName}`); // Redirect to the new channel's page
+            navigate(`/${channelName}`);
         } catch (error) {
             console.error('Error creating channel: ', error);
         }

@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import './Signup.css';
 import TabButton from "../Common/TabButton";
@@ -35,7 +34,6 @@ const Signup = () => {
   };
 
   const validatePassword = (password) => {
-    // Add your password complexity requirements here (e.g., minimum length, uppercase, lowercase, symbols)
     return password.length >= 8;
   };
 
@@ -52,7 +50,7 @@ const Signup = () => {
     }
 
     if (!validatePassword(password)) {
-      setPasswordError('Password must be at least 8 characters long'); // Adjust as needed
+      setPasswordError('Password must be at least 8 characters long');
       return;
     }
 

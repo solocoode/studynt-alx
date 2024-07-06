@@ -13,7 +13,7 @@ const Login = () => {
   const auth = getAuth();
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault();
 
     setEmailError('');
     setPasswordError('');
@@ -32,7 +32,7 @@ const Login = () => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log('User logged in:', userCredential.user);
       // Handle successful login (e.g., redirect to dashboard)
-      navigate('/'); // Replace with your desired redirect path after login
+      navigate('/');
     } catch (error) {
       console.error('Login error:', error);
       // Handle login errors appropriately (e.g., display error message)

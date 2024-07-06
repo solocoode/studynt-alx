@@ -64,7 +64,7 @@ const Profile = () => {
   };
 
   if (!user) {
-    return null; // Return null if user is not set to avoid rendering the component
+    return null;
   }
 
   return (

@@ -29,7 +29,6 @@ function Channel() {
                 name: doc.data().name
             }));
             setChannels(channelsList);
-            // Select the first channel by default
             if (channelsList.length > 0) {
                 setSelectedChannel(channelsList[0]);
             }
@@ -49,7 +48,7 @@ function Channel() {
                 ...doc.data(),
                 timestamp: doc.data().timestamp ? doc.data().timestamp.toDate() : new Date()
             }));
-            postsList.sort((a, b) => b.timestamp - a.timestamp); // Sort posts by timestamp in descending order
+            postsList.sort((a, b) => b.timestamp - a.timestamp);
             setPosts(postsList);
         } catch (error) {
             console.error('Error fetching posts: ', error);
@@ -80,7 +79,7 @@ function Channel() {
                     {posts.map(post => (
                         <div key={post.id}>
                             <ChannelCard
-                                username="User" // Assuming post data includes an 'author' field
+                                username="User"
                                 timestamp={post.timestamp && post.timestamp instanceof Date ? post.timestamp.toLocaleString() : "N/A"}
                                 title={post.title}
                                 body={post.content}

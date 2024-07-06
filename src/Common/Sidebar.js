@@ -27,7 +27,6 @@ function Channels() {
             name: doc.data().name
         }));
 
-        // Sort channelsList alphabetically by name
         channelsList.sort((a, b) => a.name.localeCompare(b.name));
 
         setChannels(channelsList);
