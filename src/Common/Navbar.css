@@ -34,6 +34,15 @@
     border-radius: 5px; /* Create rounded corners */
     transition: background-color 0.3s ease; /* Smooth transition on hover */
   }
+
+  .navbar-right p {
+    text-decoration: none;
+    color: white;
+    display: inline-block; /* Make the link behave like a block element */
+    padding: 10px 20px; /* Add padding for the background */
+    border-radius: 5px; /* Create rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+  }
   
   .profile-icon {
     width: 30px; /* Adjust width as needed */

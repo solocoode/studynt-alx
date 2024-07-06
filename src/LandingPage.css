@@ -1,0 +1,109 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+}
+
+.landing-page {
+    text-align: center;
+    color: #333;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #4a90e2;
+    color: white;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.logo a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+.nav .signup-btn {
+    background-color: #fff;
+    color: #4a90e2;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.hero {
+    background-image: url('https://source.unsplash.com/1600x900/?study,students');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+    color: white;
+}
+
+.hero-content {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    padding: 20px 40px;
+    border-radius: 10px;
+}
+
+.cta-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background-color: #4a90e2;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.about, .features, .contact {
+    padding: 50px 20px;
+    background-color: white;
+    margin-top: 30px;
+}
+
+.about p {
+    color: #333;
+}
+
+.feature-list {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.feature {
+    width: 30%;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+.feature h3 {
+    color: #4a90e2;
+}
+
+.feature p {
+    color: #213d5c;
+}
+
+.contact p {
+    color: #333;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}

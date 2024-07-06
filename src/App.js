@@ -8,6 +8,7 @@ import Login from './auth/Login';
 import Signup from './auth/Signup';
 import Profile from './auth/Profile';
 import CreateChannel from './create-channel'
+import LandingPage from './LandingPage.';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/create-channel" element={<CreateChannel />} />
+          <Route path="/about us" element={<LandingPage/>}/>
         </Routes>
       </div>
     </BrowserRouter>

@@ -19,6 +19,9 @@ function Navbar() {
           </div>
   
           <div className="navbar-right">
+          <p>
+            <Link to="/about us">About</Link>
+          </p>
           <h3>
             <Link to="/create">Create</Link> 
           </h3>
