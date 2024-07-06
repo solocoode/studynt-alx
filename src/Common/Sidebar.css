@@ -1,8 +1,10 @@
   .sidebar {
     width: 255px;
+    height: auto;
     position: absolute;
-    border-right: 1px solid white;
+    border-right: 1px solid white; 
   }
+
   
   .sidebar a {
     text-decoration: none;
@@ -11,10 +13,33 @@
     padding: 10px 20px; /* Add padding for the background */
   }
   
+.channel h3{
+  margin-left: 2px;
+  margin-right: 2px;
+  border-radius: 15px;
+  &:hover{
+    background-color: #818181;
+  }
+}
+
   .channel h4 {
     color: white;
     padding-left: 60px;
     padding-bottom: 20px;
     display: flex;
     border-bottom: 1px solid white;
+  }
+
+  .create-channel-btn {
+    padding: 0%;
+    margin-left: 15px;
+    margin-right: 2px;
+    width: 80%;
+    color: white;    
+    background-color: rgb(20, 20, 20);
+  }
+
+  .create-channel-btn h3{
+    border: 1px solid white;
+    border-radius: 15px;
   }

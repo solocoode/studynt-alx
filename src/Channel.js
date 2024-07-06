@@ -1,56 +1,115 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import './Channel.css';
-import Sidebar from './Common/Sidebar'
-import Navbar from './Common/Navbar'
+import Sidebar from './Common/Sidebar';
+import Navbar from './Common/Navbar';
+import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
 
 function Channel() {
+    const [posts, setPosts] = useState([]);
+    const [channels, setChannels] = useState([]);
+    const [selectedChannel, setSelectedChannel] = useState(null);
+
+    useEffect(() => {
+        fetchChannels();
+    }, []);
+
+    useEffect(() => {
+        if (selectedChannel) {
+            fetchPosts();
+        }
+    }, [selectedChannel]);
+
+    const fetchChannels = async () => {
+        try {
+            const db = getFirestore();
+            const channelsCollection = collection(db, 'channels');
+            const channelsSnapshot = await getDocs(channelsCollection);
+            const channelsList = channelsSnapshot.docs.map(doc => ({
+                id: doc.id,
+                name: doc.data().name
+            }));
+            setChannels(channelsList);
+            // Select the first channel by default
+            if (channelsList.length > 0) {
+                setSelectedChannel(channelsList[0]);
+            }
+        } catch (error) {
+            console.error('Error fetching channels: ', error);
+        }
+    };
+
+    const fetchPosts = async () => {
+        try {
+            const db = getFirestore();
+            const postsCollection = collection(db, 'posts');
+            const q = query(postsCollection, where("channel", "==", selectedChannel.name));
+            const postsSnapshot = await getDocs(q);
+            const postsList = postsSnapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data(),
+                timestamp: doc.data().timestamp ? doc.data().timestamp.toDate() : new Date()
+            }));
+            postsList.sort((a, b) => b.timestamp - a.timestamp); // Sort posts by timestamp in descending order
+            setPosts(postsList);
+        } catch (error) {
+            console.error('Error fetching posts: ', error);
+        }
+    };
+
+    const handleChannelChange = (event) => {
+        const channelId = event.target.value;
+        const selectedChannel = channels.find(channel => channel.id === channelId);
+        setSelectedChannel(selectedChannel);
+    };
+
     return (
         <div className="channel">
             <Navbar />
             <div className="channel-box">
-                <Sidebar/>
+                <Sidebar />
                 <div className="channel-main">
-                    <h1>s/Channel</h1>
-                    <ChannelCard/>
-                    <hr/>
+                    <select onChange={handleChannelChange} value={selectedChannel ? selectedChannel.id : ''}>
+                        {channels.map(channel => (
+                            <option key={channel.id} value={channel.id}>
+                                {channel.name}
+                            </option>
+                        ))}
+                    </select>
+                    {selectedChannel && <h1>{selectedChannel.name}</h1>}
+                    <hr />
+                    {posts.map(post => (
+                        <div key={post.id}>
+                            <ChannelCard
+                                username="User" // Assuming post data includes an 'author' field
+                                timestamp={post.timestamp && post.timestamp instanceof Date ? post.timestamp.toLocaleString() : "N/A"}
+                                title={post.title}
+                                body={post.content}
+                            />
+                            <hr />
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
     );
 }
 
-export default Channel;
-
-
-
-function ChannelCard() {
+function ChannelCard({ username, title, body, timestamp }) {
     return (
         <div className="channel-card">
             <div className="channel-card-info">
-                <h6>u/UserName</h6>
-                <h4> * </h4>
-                <h6>23 hr, ago</h6>
+                <h6>{username}</h6>
+                <p>.</p>
+                <h6>{timestamp}</h6>
             </div>
-
             <div className="channel-card-title">
-                <h3>Eductational Hackathon Study</h3>
+                <h3>{title}</h3>
             </div>
-
             <div className="channel-card-body">
-            <p>
-                We are a group of students from the SFU School of Interactive Arts and Technology, 
-                working on an exciting interface design project. 
-                Our aim is to gather insights from hackathon participants, 
-                mentors, and organizers regarding your experiences within the educational hackathon 
-                community. If you have ever mentored, participated in, or organized a hackathon before, 
-                we kindly ask you to take the time to fill out the appropriate survey below. 
-                Your participation will help contribute valuable input that can shape a platform tailored 
-                to meet the needs, challenges, and aspirations of educational hackathon stakeholders at 
-                all levels.
-                </p>
+                <p>{body}</p>
             </div>
         </div>
     );
 }
 
-
+export default Channel;
