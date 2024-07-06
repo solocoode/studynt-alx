@@ -24,7 +24,23 @@ const LandingPage = () => {
             </section>
             <section id="about" className="about">
                 <h2>About Us</h2>
-                <p>STUDYNT is a platform where students can connect, share knowledge, and help each other with academic challenges.</p>
+                <p>
+                    STUDYNT is a platform where students can connect, share knowledge, and help each other with academic challenges.
+                    We believe that learning is a collaborative process, and that students can learn from each other in ways
+                    that traditional education systems often fail to provide.
+                </p>
+                <p>
+                What inspired this project is the fact that many students struggle to find a collective place to discuss academics
+                    without distractions.
+                </p>
+                <p>
+                This project has been developed by:
+                    Solomon Githaiga Njogo <br/>
+                    Email: solonjogo@gmail.com 
+                </p>
+                <a href="https://www.linkedin.com/in/solomon-njogo/" target='blank'>My Linkedin</a> <br/>
+                <a href="https://github.com/solocoode" target='blank'>My Github</a> <br/>
+                <a href="https://github.com/solocoode/studynt-alx" target='blank'>This projects github repository</a>
             </section>
             <section id="features" className="features">
                 <h2>Features</h2>
