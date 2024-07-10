@@ -1,3 +1,4 @@
+![alt text](public/STUDYNT-LOGO.jpg)
 #STUDYNT
 #Introduction
 STUDYNT is a platform designed to facilitate seamless interaction and collaboration among students. Users can create posts, join channels, and share educational content. This project aims to enhance the learning experience by providing a centralized hub for academic discussions and resource sharing.
