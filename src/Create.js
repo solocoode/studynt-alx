@@ -30,7 +30,7 @@ function Create() {
         } catch (error) {
             console.error('Error fetching channels: ', error);
         }
-    };
+    };                
 
     const handlePost = async () => {
         if (!selectedChannel || !title || !content) {

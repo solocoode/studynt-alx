@@ -5,7 +5,7 @@ STUDYNT is a platform designed to facilitate seamless interaction and collaborat
 Deployed Site: [STUDYNT Live](https://studynt.vercel.app/)
 Final Project Blog Article: Read our Blog
 Author(s) LinkedIn: [Author Linked](https://www.linkedin.com/in/solomon-njogo/)In
-
+![alt text](<src/Screenshot (95).png>)
 #Installation
 To get started with STUDYNT, follow these steps:
 
